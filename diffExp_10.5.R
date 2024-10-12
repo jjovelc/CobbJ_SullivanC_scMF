@@ -161,7 +161,7 @@ merged_obj <- doubletFinder(merged_obj, PCs = 1:30, pN = 0.25, pK = 0.09, nExp =
 # Visualize doublet scores
 file.name <- paste0(prefix, "_doublets_scores.png")
 png(file.name)
-VlnPlot(merged_obj, features = "pANN_0.25_0.09_194", pt.size = 0.1)
+VlnPlot(merged_obj, features = "pANN_0.25_0.09_235", pt.size = 0.1)
 dev.off()
 
 # Set a threshold for doublet identification (e.g., 0.3)
