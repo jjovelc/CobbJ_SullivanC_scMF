@@ -1,3 +1,4 @@
+# scRNAseq analysis of mouse forlimbs at 10.5 and 11.5 days
 This repository contains the code and documentation for the analysis of single-cell RNA sequencing (scRNA-seq) data from mouse embryonic forelimb samples. The analysis compares wild-type (WT) and conditional knockout (cKO) samples at two developmental stages: embryonic day 10.5 (E10.5) and embryonic day 11.5 (E11.5).
 
 ## Analysis Overview
