@@ -1,6 +1,3 @@
-I'll create a README markdown document that explains the Seurat analysis in a clear, layman-friendly format.
-markdownCopy# Single-Cell RNA Sequencing Analysis with Seurat
-
 This repository contains R code for analyzing single-cell RNA sequencing data from mouse embryonic forelimb samples using the Seurat package. The analysis compares wildtype (WT) and knockout (KO) samples from embryonic day 10.5 mice.
 
 ## What Does This Code Do?
