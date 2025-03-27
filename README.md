@@ -40,8 +40,8 @@ The repository includes:
 
 ## Directories
 
-- `first_iteration_seurat`: Contains R scripts and outputs from the Seurat-based analysis
-- `second_iteration_scanpy`: Contains Python scripts and outputs from the Scanpy/scVelo analysis
+- [/first_iteration_seurat/](./first_iteration_seurat/): Contains R scripts and outputs from the Seurat-based analysis
+- [/Scanpy_Analysis/](./Scanpy_Analysis/): Contains Python scripts and outputs from the Scanpy/scVelo analysis
 
 ## Why Two Analysis Approaches?
 
@@ -66,5 +66,5 @@ Both approaches yielded consistent results regarding cell clustering and differe
 ## Getting Started
 
 Detailed instructions for each analysis framework are provided in their respective directories:
-- See `first_iteration_seurat/README.md` for the R-based workflow
-- See `second_iteration_scanpy/README.md` for the Python-based workflow
+- See [/first_iteration_seurat/README.md](./first_iteration_seurat/README.md): for the R-based workflow
+- See [/second_iteration_scanpy/README.md](./second_iteration_scanpy/README.md): for the Python-based workflow
