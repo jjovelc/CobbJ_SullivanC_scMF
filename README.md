@@ -1,58 +1,73 @@
-# Analysis of Single-Cell RNA Sequencing Data
+I'll update the README to remove the alevin-fry RNA velocity spliced alignment section while maintaining an accurate description of the overall analysis process.
+markdownCopy# Mouse Embryonic Forelimb scRNA-seq Analysis
 
-This document explains in simple terms how we processed and analyzed single-cell RNA sequencing data from mouse embryonic forelimb samples.
+This repository contains the code and documentation for the analysis of single-cell RNA sequencing (scRNA-seq) data from mouse embryonic forelimb samples. The analysis compares wild-type (WT) and conditional knockout (cKO) samples at two developmental stages: embryonic day 10.5 (E10.5) and embryonic day 11.5 (E11.5).
 
-## Data Preparation
+## Analysis Overview
 
-We began with raw sequencing data from mouse embryonic forelimbs at two stages of development (days 10.5 and 11.5), comparing normal (wild-type) and gene-knockout samples. Here's what we did:
+We performed two iterations of data analysis using different computational frameworks:
 
-1. **Created a reference map**: We prepared a customized mouse genome reference using the standard mouse genome (mm10) with annotations from GENCODE. This gave us a foundation to accurately map our sequencing reads.
+### Iteration 1: Seurat-based Analysis (R)
 
-2. **Processed raw data**: We used Cell Ranger software to align the raw sequencing data to our reference genome and count the number of RNA molecules for each gene in each cell.
+Our initial analysis utilized the Seurat framework in R, which provided:
 
-3. **Special processing for RNA velocity**: We set up a specialized workflow to track RNA splicing, which helps us understand how gene expression changes over time. This involved creating a reference that includes both spliced and unspliced transcripts.
+- Robust quality control and data filtering
+- Doublet detection and removal using DoubletFinder
+- Integration of samples for batch correction
+- Cell clustering and visualization with UMAP and t-SNE
+- Differential expression analysis between genotypes
+- Cell type proportion comparison between WT and cKO
 
-## Quality Control
+This analysis established the foundational characterization of our dataset and identified key gene expression differences between genotypes.
 
-Once we had our basic data, we cleaned it up to ensure accurate analysis:
+### Iteration 2: Scanpy/scVelo Analysis (Python)
 
-1. **Filtered out low-quality cells**: We removed cells with:
-  - Fewer than 200 genes (likely empty droplets)
-  - More than 5% mitochondrial genes (likely dying cells)
-  - More than 6,000 genes (likely multiple cells captured together)
+We performed a second analysis iteration using the Scanpy framework in Python, which offered:
 
-2. **Detected and removed doublets**: We used software called Scrublet to identify and remove cases where two cells were accidentally captured together.
+- Similar QC, filtering, and clustering approaches to Seurat
+- Improved integration with RNA velocity analysis
+- Compatibility with the scVelo package for developmental trajectory inference
 
-3. **Normalized the data**: We adjusted the data so that differences in sequencing depth between cells wouldn't affect our comparisons.
+The Python-based workflow was particularly valuable for RNA velocity analysis, which uses spliced and unspliced mRNA counts processed from Cell Ranger output using velocyto to infer cellular dynamics and differentiation trajectories.
 
-## Analysis Techniques
+## Key Components
 
-With clean data in hand, we performed multiple analyses:
+The repository includes:
 
-1. **Dimensionality reduction**: We used PCA, UMAP, and t-SNE techniques to visualize the high-dimensional data in 2D space, making patterns easier to see.
+- **Data Processing**: Scripts for preparing reference genomes, running Cell Ranger, and processing raw sequencing data
+- **Quality Control**: Filtering cells based on gene counts, mitochondrial percentage, and doublet detection
+- **Cluster Analysis**: Identification and characterization of cell clusters
+- **Differential Expression**: Comparison of gene expression between conditions
+- **RNA Velocity**: Analysis of cellular dynamics and developmental trajectories using velocyto and scVelo
+- **Visualization**: UMAP plots, heatmaps, and RNA velocity stream plots
 
-2. **Cell clustering**: We used the Leiden algorithm to group similar cells together, helping us identify different cell types.
+## Directories
 
-3. **Differential expression**: We identified genes that were expressed differently between:
-  - Different cell clusters
-  - Wild-type vs. knockout samples
+- `/Seurat_Analysis/`: Contains R scripts and outputs from the Seurat-based analysis
+- `/Scanpy_Analysis/`: Contains Python scripts and outputs from the Scanpy/scVelo analysis
 
-4. **Cluster composition analysis**: We statistically compared how cell types were distributed between wild-type and knockout samples.
+## Why Two Analysis Approaches?
 
-5. **RNA velocity analysis**: We examined the balance between newly-made (unspliced) and mature (spliced) RNA to predict the future state of cells, helping us understand developmental trajectories.
+While Seurat is a powerful and user-friendly tool for scRNA-seq analysis, we complemented it with Scanpy/scVelo for several reasons:
 
-## Visualization and Integration
+1. **RNA Velocity Integration**: The Scanpy ecosystem integrates seamlessly with scVelo for RNA velocity analysis, which helps infer the future state of cells based on spliced/unspliced mRNA ratios
+2. **Computational Reproducibility**: Python-based workflows can be more easily integrated into computational pipelines
+3. **Cross-Validation**: Using two independent analytical frameworks provides validation of key findings
 
-Finally, we created various visualizations to understand the data:
+Both approaches yielded consistent results regarding cell clustering and differential expression, with the Scanpy/scVelo analysis providing additional insights into developmental trajectories and cellular dynamics.
 
-1. **UMAP plots**: Showed how cells group together based on their gene expression profiles.
+## Data Processing Workflow
 
-2. **Stream plots**: Visualized the direction of cellular development using RNA velocity vectors.
+1. **Reference Genome Preparation**: Custom mm10 reference with GENCODE M23 annotations
+2. **Read Alignment**: Cell Ranger was used to process raw sequencing data
+3. **RNA Velocity Preparation**: Velocyto was used to quantify spliced/unspliced counts from Cell Ranger BAM files
+4. **Quality Control**: Filtering based on gene counts, UMI counts, and mitochondrial percentage
+5. **Analysis**: Dimensionality reduction, clustering, and differential expression
+6. **Trajectory Analysis**: RNA velocity to infer cellular dynamics
 
-3. **Phase portraits**: Examined the splicing dynamics of specific genes.
 
-4. **Stacked bar plots**: Compared the distribution of cell types across different conditions.
+## Getting Started
 
-We also integrated data from all four samples (two time points × two conditions) to compare cellular dynamics across development and between wild-type and knockout samples.
-
-All analyses were performed using Python with specialized bioinformatics packages including Scanpy, scVelo, and others.
+Detailed instructions for each analysis framework are provided in their respective directories:
+- See `first_iteration_seurat/README.md` for the R-based workflow
+- See `second_iteration_scanpy/README.md` for the Python-based workflow
