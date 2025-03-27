@@ -40,8 +40,8 @@ The repository includes:
 
 ## Directories
 
-- `/Seurat_Analysis/`: Contains R scripts and outputs from the Seurat-based analysis
-- `/Scanpy_Analysis/`: Contains Python scripts and outputs from the Scanpy/scVelo analysis
+- `first_iteration_seurat`: Contains R scripts and outputs from the Seurat-based analysis
+- `second_iteration_scanpy`: Contains Python scripts and outputs from the Scanpy/scVelo analysis
 
 ## Why Two Analysis Approaches?
 
