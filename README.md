@@ -1,11 +1,11 @@
-# scRNAseq analysis of mouse forelimbs at 10.5 and 11.5 days
+# :hibiscus: scRNAseq analysis of mouse forelimbs at 10.5 and 11.5 days :hibiscus:
 This repository contains the code and documentation for the analysis of single-cell RNA sequencing (scRNA-seq) data from mouse embryonic forelimb samples. The analysis compares wild-type (WT) and conditional knockout (cKO) samples at two developmental stages: embryonic day 10.5 (E10.5) and embryonic day 11.5 (E11.5).
 
-## Analysis Overview
+## 🧬 Analysis Overview
 
 We performed two iterations of data analysis using different computational frameworks:
 
-### Iteration 1: Seurat-based Analysis (R)
+### :sunny: Iteration 1: Seurat-based Analysis (R)
 
 Our initial analysis utilized the Seurat framework in R, which provided:
 
@@ -18,7 +18,7 @@ Our initial analysis utilized the Seurat framework in R, which provided:
 
 This analysis established the foundational characterization of our dataset and identified key gene expression differences between genotypes.
 
-### Iteration 2: Scanpy/scVelo Analysis (Python)
+### :sunny: Iteration 2: Scanpy/scVelo Analysis (Python)
 
 We performed a second analysis iteration using the Scanpy framework in Python, which offered:
 
@@ -28,7 +28,7 @@ We performed a second analysis iteration using the Scanpy framework in Python, w
 
 The Python-based workflow was particularly valuable for RNA velocity analysis, which uses spliced and unspliced mRNA counts processed from Cell Ranger output using velocyto to infer cellular dynamics and differentiation trajectories.
 
-## Key Components
+## 🧬 Key Components
 
 The repository includes:
 
@@ -39,12 +39,12 @@ The repository includes:
 - **RNA Velocity**: Analysis of cellular dynamics and developmental trajectories using velocyto and scVelo
 - **Visualization**: UMAP plots, heatmaps, and RNA velocity stream plots
 
-## Directories
+## 🧬 Directories
 
 - [/first_iteration_seurat/](./first_iteration_seurat/): Contains R scripts and outputs from the Seurat-based analysis
 - [/Scanpy_Analysis/](./Scanpy_Analysis/): Contains Python scripts and outputs from the Scanpy/scVelo analysis
 
-## Why Two Analysis Approaches?
+## 🧬 Why Two Analysis Approaches?
 
 While Seurat is a powerful and user-friendly tool for scRNA-seq analysis, we complemented it with Scanpy/scVelo for several reasons:
 
@@ -54,7 +54,7 @@ While Seurat is a powerful and user-friendly tool for scRNA-seq analysis, we com
 
 Both approaches yielded consistent results regarding cell clustering and differential expression, with the Scanpy/scVelo analysis providing additional insights into developmental trajectories and cellular dynamics.
 
-## Data Processing Workflow
+## 🧬 Data Processing Workflow
 
 1. **Reference Genome Preparation**: Custom mm10 reference with GENCODE M23 annotations
 2. **Read Alignment**: Cell Ranger was used to process raw sequencing data
@@ -64,7 +64,7 @@ Both approaches yielded consistent results regarding cell clustering and differe
 6. **Trajectory Analysis**: RNA velocity to infer cellular dynamics
 
 
-## Getting Started
+## 🧬 Getting Started
 
 Detailed instructions for each analysis framework are provided in their respective directories:
 - See [/first_iteration_seurat/README.md](./first_iteration_seurat/README.md): for the R-based workflow
